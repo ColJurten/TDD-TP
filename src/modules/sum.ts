@@ -10,9 +10,14 @@ export function sum(numA: number, numB: number){
 };
 
 export function addition(a: number, b: number): number {
+
+    // return sumSmallNumbers(a, b);
+
     if (a < 0 || b < 0) {
         throw new Error("Your numbers must be positive !");
     }
+
+    // return sumSmallNumbers(a, b);
 
     const digitsA = String(a).split('').reverse();
     const digitsB = String(b).split('').reverse();
