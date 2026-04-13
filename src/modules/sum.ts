@@ -14,17 +14,19 @@ export function sum(numA: number, numB: number){
 };
 
 export function addition(a: number, b: number): number {
+    const aIsNegative = a < 0;
+    const bIsNegative = b < 0;
 
-    // return sumSmallNumbers(a, b);
-
-    if (a < 0 || b < 0) {
+    if (aIsNegative !== bIsNegative) {
         throw new Error("Your numbers must be positive !");
     }
 
-    // return sumSmallNumbers(a, b);
+    const isNegativeResult = aIsNegative && bIsNegative;
+    const absA = Math.abs(a);
+    const absB = Math.abs(b);
 
-    const digitsA = String(a).split('').reverse();
-    const digitsB = String(b).split('').reverse();
+    const digitsA = String(absA).split('').reverse();
+    const digitsB = String(absB).split('').reverse();
     const maxLength = digitsA.length > digitsB.length ? digitsA.length : digitsB.length;
 
     let carry = 0;
@@ -64,6 +66,7 @@ export function addition(a: number, b: number): number {
         result = String(carry).concat(result);
     }
 
-    return Number(result);
+    const numericResult = Number(result);
+    return isNegativeResult ? -numericResult : numericResult;
 }
 

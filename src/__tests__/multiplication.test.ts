@@ -1,4 +1,4 @@
-import { expect, describe, it } from 'vitest';
+import { expect, describe, it, test } from 'vitest';
 import { multiplication } from '../modules/mutiplication';
 
 
@@ -55,4 +55,70 @@ describe('multiplication - STEP 3: numB négatif et deux négatifs', () => {
     it('should return 100 when -10 * -10', () => {
         expect(multiplication(-10, -10)).toBe(100);
     });
+});
+
+
+describe("Multiplication", () => {
+  describe("Classic", () => {
+    test("small numbers", () => {
+      expect(multiplication(2, 3)).toBe(6);
+    });
+
+    test("big numbers", () => {
+      expect(multiplication(10, 10)).toBe(100);
+    });
+  });
+
+  const positiveNumber = 2
+  const negativeNumber = -positiveNumber
+  describe("same sign", () => {
+
+    test("positives", () => {
+      expect(multiplication(positiveNumber, positiveNumber)).toBeGreaterThan(0);
+    });
+
+    test("negatives", () => {
+      expect(multiplication(negativeNumber, negativeNumber)).toBeGreaterThan(0);
+    });
+  });
+
+  describe("different sign", () => {
+    test("positives", () => {
+      expect(multiplication(positiveNumber, negativeNumber)).toBeLessThan(0);
+    });
+
+    test("negatives", () => {
+      expect(multiplication(negativeNumber, positiveNumber)).toBeLessThan(0);
+    });
+  });
+
+  describe("zero", () => {
+    const anyNumber = 3
+      test("start with zero", () => {
+        expect(multiplication(0, anyNumber)).toBe(0);
+      });
+
+      test("end with zero", () => {
+        expect(multiplication(anyNumber, 0)).toBe(0);
+      });
+
+      test("zero only", () => {
+        expect(multiplication(0, 0)).toBe(0);
+      });
+  });
+
+  describe("one", () => {
+    const anyNumber = 3
+      test("start with one", () => {
+        expect(multiplication(1, anyNumber)).toBe(anyNumber);
+      });
+
+      test("end with one", () => {
+        expect(multiplication(anyNumber, 1)).toBe(anyNumber);
+      });
+
+      test("one only", () => {
+        expect(multiplication(1, 1)).toBe(1);
+      });
+  });
 });
